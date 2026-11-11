@@ -4,7 +4,7 @@ alpha, beta, pers, vratio=vol5/lr5, ens_garch=ens/vol5."""
 import os as _os
 HERE=_os.path.dirname(_os.path.abspath(__file__))
 P=_os.environ.get('SWING_DATA',_os.path.join(HERE,'..','data'))
-ALPHA_SRC=_os.environ.get('ALPHA_SRC',_os.path.join(HERE,'..','..','project4_ml_alpha','src'))
+ALPHA_SRC=_os.environ.get('ALPHA_SRC',next((p for p in (_os.path.join(HERE,'..','..',n,'src') for n in ('ml-alpha-sp500','project4_ml_alpha')) if _os.path.isdir(p)),''))
 import sys, numpy as np, pandas as pd
 from scipy.optimize import minimize
 END,IN,OUT=sys.argv[1],sys.argv[2],sys.argv[3]

@@ -3,7 +3,7 @@ plus the index ETFs, daily OHLCV from Yahoo Finance. Usage: python build_prices.
 import os as _os
 HERE=_os.path.dirname(_os.path.abspath(__file__))
 P=_os.environ.get('SWING_DATA',_os.path.join(HERE,'..','data'))
-ALPHA_SRC=_os.environ.get('ALPHA_SRC',_os.path.join(HERE,'..','..','project4_ml_alpha','src'))
+ALPHA_SRC=_os.environ.get('ALPHA_SRC',next((p for p in (_os.path.join(HERE,'..','..',n,'src') for n in ('ml-alpha-sp500','project4_ml_alpha')) if _os.path.isdir(p)),''))
 import sys, json, pandas as pd; sys.path.insert(0,ALPHA_SRC); sys.path.insert(0,HERE)
 from alpha import data
 from members import ever

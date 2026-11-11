@@ -6,7 +6,7 @@ Usage: python tp2.py LEDGER TRADE_DATE NEXT_TRADE_DATE [TP=0.02]"""
 import os as _os
 HERE=_os.path.dirname(_os.path.abspath(__file__))
 P=_os.environ.get('SWING_DATA',_os.path.join(HERE,'..','data'))
-ALPHA_SRC=_os.environ.get('ALPHA_SRC',_os.path.join(HERE,'..','..','project4_ml_alpha','src'))
+ALPHA_SRC=_os.environ.get('ALPHA_SRC',next((p for p in (_os.path.join(HERE,'..','..',n,'src') for n in ('ml-alpha-sp500','project4_ml_alpha')) if _os.path.isdir(p)),''))
 import sys, json, pandas as pd
 LG,D0,D1=sys.argv[1],pd.Timestamp(sys.argv[2]),pd.Timestamp(sys.argv[3]); TP=float(sys.argv[4]) if len(sys.argv)>4 else 0.02
 SF=f'{P}/ledger_state_{LG}.json'; TF=f'{P}/ledger_trades_{LG}.csv'

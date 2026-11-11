@@ -1,4 +1,4 @@
-# ml-swing-trader
+# ML Swing Trader (S&P 500)
 
 A weekly swing-trading system for S&P 500 stocks and index ETFs. Three machine-learning models score every stock each week. A GARCH volatility forecast filters the risk. A ledger tracks every trade with real fees and taxes.
 
@@ -26,7 +26,7 @@ The hard part was not the models. It was making sure no number used information 
 
 ## What the research found
 
-The original backtest (my `project4_ml_alpha` repo) looked strong. It was not. The edge came from survivorship bias: it trained on today's S&P list, which quietly selects stocks that went on to do well. Once membership was made point-in-time, the clean hold-out showed no reliable edge after costs.
+The original backtest (my [ml-alpha-sp500](https://github.com/ahmer64-sketch/ml-alpha-sp500) repo) looked strong. It was not. The edge came from survivorship bias: it trained on today's S&P list, which quietly selects stocks that went on to do well. Once membership was made point-in-time, the clean hold-out showed no reliable edge after costs.
 
 This repo is the rebuilt, point-in-time version. Out-of-sample information coefficients are small. The GBM's validation IC for the 2026 model is 0.018. That is typical for weekly equity signals and far too thin to trust without a long live record. I ran a live paper account from August 2026 to test it, but I made discretionary changes along the way, including some with hindsight, so I do not report its return as evidence.
 
@@ -34,7 +34,13 @@ The useful output of this project is the pipeline and the discipline around it. 
 
 ## Run it
 
-Requires the `alpha` package from `project4_ml_alpha` (data loading and feature code). By default it is expected as a sibling folder. Set `ALPHA_SRC` to point elsewhere.
+Requires the `alpha` package from [ml-alpha-sp500](https://github.com/ahmer64-sketch/ml-alpha-sp500) (data loading and feature code). Clone both repos side by side, or set `ALPHA_SRC` to its `src/` folder.
+
+```bash
+git clone https://github.com/ahmer64-sketch/ml-alpha-sp500
+git clone https://github.com/ahmer64-sketch/ml-swing-trader
+cd ml-swing-trader
+```
 
 ```bash
 pip install -r requirements.txt
